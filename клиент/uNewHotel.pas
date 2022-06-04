@@ -29,4 +29,9 @@ implementation
 
 {$R *.dfm}
 
+procedure TfmNewHotel.ePriceKeyPress(Sender: TObject; var Key: Char);
+begin
+  if not (Key in ['0'..'9', #8]) then Key := #0;
+end;
+
 end.
