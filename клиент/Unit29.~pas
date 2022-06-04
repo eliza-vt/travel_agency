@@ -1,0 +1,70 @@
+unit Unit29;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs,  StdCtrls, Buttons, Unit1, System;
+
+type
+  TfmTest = class(TForm)
+    BitBtn1: TBitBtn;
+    procedure BitBtn1Click(Sender: TObject);
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  fmTest: TfmTest;
+
+implementation
+
+uses Unit2;
+
+{$R *.dfm}
+
+procedure TfmTest.BitBtn1Click(Sender: TObject);
+var i:integer; s:string;  sw: TStopwatch;
+begin
+  sw := TStopwatch.StartNew;
+  sw.Start;
+  for i := 1 to 10 do
+    dm.DCOMConnection1.AppServer.smAddCLient(0, 'тест', 0, 1);
+  sw.Stop;
+  s :='10 ' + sw.Elapsed.TotalMilliseconds.ToString;
+
+  sw := TStopwatch.StartNew;
+  sw.Start;
+  for i := 1 to 50 do
+    dm.DCOMConnection1.AppServer.smAddCLient(0, 'тест', 0, 1);
+  sw.Stop;
+  s :=s + ' 50 ' + sw.Elapsed.TotalMilliseconds.ToString;
+
+  sw := TStopwatch.StartNew;
+  sw.Start;
+  for i := 1 to 100 do
+    dm.DCOMConnection1.AppServer.smAddCLient(0, 'тест', 0, 1);
+  sw.Stop;
+  s :=s + ' 100 ' + sw.Elapsed.TotalMilliseconds.ToString;
+
+  sw := TStopwatch.StartNew;
+  sw.Start;
+  for i := 1 to 500 do
+    dm.DCOMConnection1.AppServer.smAddCLient(0, 'тест', 0, 1);
+  sw.Stop;
+  s :=s + ' 500 ' + sw.Elapsed.TotalMilliseconds.ToString;
+
+  sw := TStopwatch.StartNew;
+  sw.Start;
+  for i := 1 to 1000 do
+    dm.DCOMConnection1.AppServer.smAddCLient(0, 'тест', 0, 1);
+  sw.Stop;
+  s :=s + ' 1000 ' + sw.Elapsed.TotalMilliseconds.ToString;
+
+  ShowMessage(s);
+
+end;
+
+end.

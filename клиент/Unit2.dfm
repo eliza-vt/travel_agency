@@ -1,0 +1,673 @@
+object dm: Tdm
+  OldCreateOrder = False
+  OnCreate = DataModuleCreate
+  Left = 146
+  Top = 212
+  Height = 446
+  Width = 1192
+  object DCOMConnection1: TDCOMConnection
+    Connected = True
+    ServerGUID = '{65F470B2-7A2D-4111-A4C7-894CAB170A02}'
+    ServerName = 'Project2.MyServer'
+    Left = 16
+    Top = 8
+  end
+  object cdsApplication: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspApplication'
+    RemoteServer = DCOMConnection1
+    Left = 104
+    Top = 8
+    object cdsApplicationID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsApplicationID_CLIENT: TIntegerField
+      FieldName = 'ID_CLIENT'
+      Visible = False
+    end
+    object cdsApplicationCLIENT_NAME: TStringField
+      DisplayLabel = #1050#1083#1080#1077#1085#1090
+      FieldKind = fkLookup
+      FieldName = 'CLIENT_NAME'
+      LookupDataSet = cdsClient
+      LookupKeyFields = 'ID'
+      LookupResultField = 'SURNAME'
+      KeyFields = 'ID_CLIENT'
+      Size = 15
+      Lookup = True
+    end
+    object cdsApplicationDATE_RG: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '
+      FieldName = 'DATE_RG'
+    end
+  end
+  object cdsChild: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspChild'
+    RemoteServer = DCOMConnection1
+    Left = 176
+    Top = 8
+    object cdsChildID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsChildNAME: TStringField
+      DisplayLabel = #1048#1084#1103
+      DisplayWidth = 15
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsChildSURNAME: TStringField
+      DisplayLabel = #1060#1072#1084#1080#1083#1080#1103
+      DisplayWidth = 15
+      FieldName = 'SURNAME'
+      Size = 255
+    end
+    object cdsChildLASTNAME: TStringField
+      DisplayLabel = #1054#1090#1095#1077#1089#1090#1074#1086
+      DisplayWidth = 15
+      FieldName = 'LASTNAME'
+      Size = 255
+    end
+  end
+  object cdsCity: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspCity'
+    RemoteServer = DCOMConnection1
+    Left = 240
+    Top = 8
+    object cdsCityID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsCityNAME: TStringField
+      DisplayLabel = #1053#1072#1079#1074#1072#1085#1080#1077
+      DisplayWidth = 15
+      FieldName = 'NAME'
+      Size = 255
+    end
+  end
+  object cdsClient: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspClient'
+    RemoteServer = DCOMConnection1
+    Left = 304
+    Top = 8
+    object cdsClientID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsClientNAME: TStringField
+      DisplayLabel = #1048#1084#1103
+      DisplayWidth = 15
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsClientSURNAME: TStringField
+      DisplayLabel = #1060#1072#1084#1080#1083#1080#1103
+      DisplayWidth = 15
+      FieldName = 'SURNAME'
+      Size = 255
+    end
+    object cdsClientLASTNAME: TStringField
+      DisplayLabel = #1054#1090#1095#1077#1089#1090#1074#1086
+      DisplayWidth = 15
+      FieldName = 'LASTNAME'
+      Size = 255
+    end
+    object cdsClientID_CHILD: TIntegerField
+      FieldName = 'ID_CHILD'
+      Visible = False
+    end
+    object cdsClientPOL: TStringField
+      DisplayLabel = #1055#1086#1083
+      DisplayWidth = 15
+      FieldName = 'POL'
+      Size = 255
+    end
+    object cdsClientPURPOSE: TStringField
+      DisplayLabel = #1062#1077#1083#1100' '#1087#1086#1077#1079#1076#1082#1080
+      DisplayWidth = 15
+      FieldName = 'PURPOSE'
+      Size = 255
+    end
+    object cdsClientCHILD_NAME: TStringField
+      DisplayLabel = #1044#1077#1090#1080
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'CHILD_NAME'
+      LookupDataSet = cdsChild
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_CHILD'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object cdsCountry: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspCountry'
+    RemoteServer = DCOMConnection1
+    Left = 376
+    Top = 8
+    object cdsCountryID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsCountryID_CITY: TIntegerField
+      FieldName = 'ID_CITY'
+      Visible = False
+    end
+    object cdsCountryNAME: TStringField
+      DisplayLabel = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+      DisplayWidth = 15
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsCountryCITY_NAME: TStringField
+      DisplayLabel = #1043#1086#1088#1086#1076
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'CITY_NAME'
+      LookupDataSet = cdsCity
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_CITY'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object cdsExcursion: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspExcursion'
+    RemoteServer = DCOMConnection1
+    Left = 448
+    Top = 8
+    object cdsExcursionID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsExcursionDATE_EXCRSN: TDateField
+      DisplayLabel = #1044#1072#1090#1072
+      FieldName = 'DATE_EXCRSN'
+    end
+    object cdsExcursionNAME: TStringField
+      DisplayLabel = #1053#1072#1079#1074#1072#1085#1080#1077
+      DisplayWidth = 15
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsExcursionLASTING: TIntegerField
+      DisplayLabel = #1055#1088#1086#1076#1086#1083#1078#1080#1090#1077#1083#1100#1085#1086#1089#1090#1100
+      FieldName = 'LASTING'
+    end
+    object cdsExcursionPLACE: TStringField
+      DisplayLabel = #1052#1077#1089#1090#1086
+      DisplayWidth = 15
+      FieldName = 'PLACE'
+      Size = 255
+    end
+    object cdsExcursionAGENCY: TStringField
+      DisplayLabel = #1040#1075#1077#1085#1090#1089#1090#1074#1086
+      DisplayWidth = 15
+      FieldName = 'AGENCY'
+      Size = 255
+    end
+    object cdsExcursionRETING_AGENCY: TFloatField
+      DisplayLabel = #1056#1077#1081#1090#1080#1085#1075' '#1072#1075#1077#1085#1090#1089#1090#1074#1072
+      FieldName = 'RETING_AGENCY'
+    end
+    object cdsExcursionPRICE: TFloatField
+      DisplayLabel = #1062#1077#1085#1072
+      FieldName = 'PRICE'
+    end
+  end
+  object cdsHavingweight: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspHavingweight'
+    RemoteServer = DCOMConnection1
+    Left = 528
+    Top = 8
+    object cdsHavingweightID_CLIENT: TIntegerField
+      FieldName = 'ID_CLIENT'
+      Visible = False
+    end
+    object cdsHavingweightID_WEIGHT: TIntegerField
+      FieldName = 'ID_WEIGHT'
+      Visible = False
+    end
+    object cdsHavingweightID_WEIGHTER: TIntegerField
+      FieldName = 'ID_WEIGHTER'
+      Visible = False
+    end
+    object cdsHavingweightID_TRANSPORT: TIntegerField
+      FieldName = 'ID_TRANSPORT'
+      Visible = False
+    end
+    object cdsHavingweightCLIENT_NAME: TStringField
+      DisplayLabel = #1050#1083#1080#1077#1085#1090
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'CLIENT_NAME'
+      LookupDataSet = cdsClient
+      LookupKeyFields = 'ID'
+      LookupResultField = 'SURNAME'
+      KeyFields = 'ID_CLIENT'
+      Size = 50
+      Lookup = True
+    end
+    object cdsHavingweightWEIGHT_NAME: TStringField
+      DisplayLabel = #1043#1088#1091#1079
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'WEIGHT_NAME'
+      LookupDataSet = cdsWeight
+      LookupKeyFields = 'ID'
+      LookupResultField = 'KIND'
+      KeyFields = 'ID_WEIGHT'
+      Size = 50
+      Lookup = True
+    end
+    object cdsHavingweightWEIGHTER_NAME: TStringField
+      DisplayLabel = #1043#1088#1091#1079#1095#1080#1082
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'WEIGHTER_NAME'
+      LookupDataSet = cdsWeighter
+      LookupKeyFields = 'ID'
+      LookupResultField = 'SURNAME'
+      KeyFields = 'ID_WEIGHTER'
+      Size = 50
+      Lookup = True
+    end
+    object cdsHavingweightTRANSPORT_NAME: TStringField
+      DisplayLabel = #1058#1088#1072#1085#1089#1087#1086#1088#1090
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'TRANSPORT_NAME'
+      LookupDataSet = cdsTransport
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_TRANSPORT'
+      Size = 50
+      Lookup = True
+    end
+  end
+  object cdsHotel: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspHotel'
+    RemoteServer = DCOMConnection1
+    Left = 608
+    Top = 8
+    object cdsHotelID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsHotelNAME: TStringField
+      DisplayLabel = #1053#1072#1079#1074#1072#1085#1080#1077
+      DisplayWidth = 15
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsHotelRECING: TFloatField
+      DisplayLabel = #1056#1077#1081#1090#1080#1085#1075
+      DisplayWidth = 5
+      FieldName = 'RECING'
+    end
+    object cdsHotelPRICE: TFloatField
+      DisplayLabel = #1062#1077#1085#1072', '#1074' '#1088#1091#1073#1083#1103#1093
+      FieldName = 'PRICE'
+    end
+  end
+  object cdsLeaving: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspLeaving'
+    RemoteServer = DCOMConnection1
+    Left = 672
+    Top = 8
+    object cdsLeavingID_HOTEL: TIntegerField
+      FieldName = 'ID_HOTEL'
+      Visible = False
+    end
+    object cdsLeavingID_CLIENT: TIntegerField
+      FieldName = 'ID_CLIENT'
+      Visible = False
+    end
+    object cdsLeavingCLIENT_NAME: TStringField
+      DisplayLabel = #1050#1083#1080#1077#1085#1090
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'CLIENT_NAME'
+      LookupDataSet = cdsClient
+      LookupKeyFields = 'ID'
+      LookupResultField = 'SURNAME'
+      KeyFields = 'ID_CLIENT'
+      Size = 50
+      Lookup = True
+    end
+    object cdsLeavingHOTEL_NAME: TStringField
+      DisplayLabel = #1043#1086#1089#1090#1080#1085#1085#1080#1094#1072
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'HOTEL_NAME'
+      LookupDataSet = cdsHotel
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_HOTEL'
+      Size = 50
+      Lookup = True
+    end
+    object cdsLeavingDATE_ARRIVING: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '#1079#1072#1089#1077#1083#1077#1085#1080#1103
+      FieldName = 'DATE_ARRIVING'
+    end
+    object cdsLeavingDATE_LEAVING: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '#1074#1099#1089#1077#1083#1077#1085#1080#1103
+      DisplayWidth = 10
+      FieldName = 'DATE_LEAVING'
+    end
+    object cdsLeavingROOM: TIntegerField
+      DisplayLabel = #1053#1086#1084#1077#1088
+      FieldName = 'ROOM'
+    end
+  end
+  object cdsTour: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspTour'
+    RemoteServer = DCOMConnection1
+    Left = 744
+    Top = 8
+    object cdsTourID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsTourID_TRANSPORT: TIntegerField
+      FieldName = 'ID_TRANSPORT'
+      Visible = False
+    end
+    object cdsTourID_COUNTRY: TIntegerField
+      FieldName = 'ID_COUNTRY'
+      Visible = False
+    end
+    object cdsTourID_APPLICATION: TIntegerField
+      FieldName = 'ID_APPLICATION'
+      Visible = False
+    end
+    object cdsTourTRANSPORT_NAME: TStringField
+      DisplayLabel = #1058#1088#1072#1085#1089#1087#1086#1088#1090
+      FieldKind = fkLookup
+      FieldName = 'TRANSPORT_NAME'
+      LookupDataSet = cdsTransport
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_TRANSPORT'
+      Size = 15
+      Lookup = True
+    end
+    object cdsTourCOUNTRY_NAME: TStringField
+      DisplayLabel = #1057#1090#1088#1072#1085#1072
+      FieldKind = fkLookup
+      FieldName = 'COUNTRY_NAME'
+      LookupDataSet = cdsCountry
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_COUNTRY'
+      Size = 15
+      Lookup = True
+    end
+    object cdsTourCLIENT_NAME: TStringField
+      DisplayLabel = #1050#1083#1080#1077#1085#1090
+      FieldKind = fkLookup
+      FieldName = 'CLIENT_NAME'
+      LookupDataSet = cdsApplication
+      LookupKeyFields = 'ID'
+      LookupResultField = 'CLIENT_NAME'
+      KeyFields = 'ID_APPLICATION'
+      Size = 15
+      Lookup = True
+    end
+    object cdsTourDATE_ARRIVING: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '#1087#1088#1080#1073#1099#1090#1080#1103
+      FieldName = 'DATE_ARRIVING'
+    end
+    object cdsTourDATE_LEAVING: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '#1074#1086#1079#1074#1088#1072#1097#1077#1085#1080#1103
+      FieldName = 'DATE_LEAVING'
+    end
+    object cdsTourPURPOSE: TStringField
+      DisplayLabel = #1042#1080#1076' '#1090#1091#1088#1072
+      DisplayWidth = 15
+      FieldName = 'PURPOSE'
+      Size = 255
+    end
+  end
+  object cdsTransport: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspTransport'
+    RemoteServer = DCOMConnection1
+    Left = 816
+    Top = 8
+    object cdsTransportID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsTransportNAME: TStringField
+      DisplayLabel = #1053#1072#1080#1084#1077#1085#1086#1074#1072#1085#1080#1077
+      DisplayWidth = 15
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsTransportAIRPORT: TStringField
+      DisplayLabel = #1040#1101#1088#1086#1087#1086#1088#1090
+      DisplayWidth = 15
+      FieldName = 'AIRPORT'
+      Size = 255
+    end
+    object cdsTransportPRICE: TFloatField
+      DisplayLabel = #1062#1077#1085#1072
+      DisplayWidth = 10
+      FieldName = 'PRICE'
+    end
+    object cdsTransportKIND: TStringField
+      DisplayLabel = #1042#1080#1076
+      DisplayWidth = 15
+      FieldName = 'KIND'
+      Size = 255
+    end
+    object cdsTransportDISPATCHER: TFloatField
+      DisplayLabel = #1044#1080#1089#1087' '#1091#1089#1083#1091#1075#1080
+      FieldName = 'DISPATCHER'
+    end
+    object cdsTransportKEEPING: TFloatField
+      DisplayLabel = #1055#1083#1072#1090#1072' '#1079#1072' '#1075#1088#1091#1079
+      FieldName = 'KEEPING'
+    end
+  end
+  object cdsWeight: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspWeight'
+    RemoteServer = DCOMConnection1
+    Left = 888
+    Top = 8
+    object cdsWeightID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsWeightID_CLIENT: TIntegerField
+      FieldName = 'ID_CLIENT'
+      Visible = False
+    end
+    object cdsWeightCLIENT_NAME: TStringField
+      DisplayLabel = #1050#1083#1080#1077#1085#1090
+      DisplayWidth = 15
+      FieldKind = fkLookup
+      FieldName = 'CLIENT_NAME'
+      LookupDataSet = cdsClient
+      LookupKeyFields = 'ID'
+      LookupResultField = 'SURNAME'
+      KeyFields = 'ID_CLIENT'
+      Size = 50
+      Lookup = True
+    end
+    object cdsWeightDATE_ARRIVING: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '#1087#1088#1080#1073#1099#1090#1080#1103
+      FieldName = 'DATE_ARRIVING'
+    end
+    object cdsWeightDATE_LEAVING: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '#1086#1090#1087#1088#1072#1074#1083#1077#1085#1080#1103
+      FieldName = 'DATE_LEAVING'
+    end
+    object cdsWeightKIND: TStringField
+      DisplayLabel = #1042#1080#1076' '
+      DisplayWidth = 15
+      FieldName = 'KIND'
+      Size = 255
+    end
+    object cdsWeightPRICE: TFloatField
+      DisplayLabel = #1057#1090#1086#1080#1084#1086#1089#1090#1100' '#1093#1088#1072#1085#1077#1085#1080#1103
+      FieldName = 'PRICE'
+    end
+  end
+  object cdsWeighter: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspWeighter'
+    RemoteServer = DCOMConnection1
+    Left = 960
+    Top = 8
+    object cdsWeighterID: TIntegerField
+      FieldName = 'ID'
+      Required = True
+      Visible = False
+    end
+    object cdsWeighterNAME: TStringField
+      DisplayLabel = #1048#1084#1103
+      DisplayWidth = 15
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsWeighterSURNAME: TStringField
+      DisplayLabel = #1060#1072#1084#1080#1083#1080#1103
+      DisplayWidth = 15
+      FieldName = 'SURNAME'
+      Size = 255
+    end
+    object cdsWeighterLASTNAME: TStringField
+      DisplayLabel = #1054#1090#1095#1077#1089#1090#1074#1086
+      DisplayWidth = 15
+      FieldName = 'LASTNAME'
+      Size = 255
+    end
+  end
+  object cdsTMP: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspTMP'
+    RemoteServer = DCOMConnection1
+    Left = 104
+    Top = 80
+    object cdsTMPID: TIntegerField
+      FieldName = 'ID'
+    end
+    object cdsTMPNAME: TStringField
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsTMPSUMM: TBCDField
+      FieldName = 'SUMM'
+      Precision = 18
+      Size = 2
+    end
+  end
+  object cdsTMP1: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspTMP1'
+    RemoteServer = DCOMConnection1
+    Left = 192
+    Top = 80
+    object cdsTMP1ID: TIntegerField
+      FieldName = 'ID'
+    end
+    object cdsTMP1NAME: TStringField
+      FieldName = 'NAME'
+      Size = 255
+    end
+    object cdsTMP1SURNAME: TStringField
+      FieldName = 'SURNAME'
+      Size = 255
+    end
+    object cdsTMP1LASTNAME: TStringField
+      FieldName = 'LASTNAME'
+      Size = 255
+    end
+    object cdsTMP1SUMM: TIntegerField
+      FieldName = 'SUMM'
+    end
+  end
+  object cdsInexcursion: TClientDataSet
+    Aggregates = <>
+    Params = <>
+    ProviderName = 'dspInexcursion'
+    RemoteServer = DCOMConnection1
+    Left = 1056
+    Top = 8
+    object cdsInexcursionID_CLIENT: TIntegerField
+      FieldName = 'ID_CLIENT'
+      Visible = False
+    end
+    object cdsInexcursionID_EXCURSION: TIntegerField
+      FieldName = 'ID_EXCURSION'
+      Visible = False
+    end
+    object cdsInexcursionCLIENT_NAME: TStringField
+      DisplayLabel = #1050#1083#1080#1077#1085#1090
+      FieldKind = fkLookup
+      FieldName = 'CLIENT_NAME'
+      LookupDataSet = cdsClient
+      LookupKeyFields = 'ID'
+      LookupResultField = 'SURNAME'
+      KeyFields = 'ID_CLIENT'
+      Size = 15
+      Lookup = True
+    end
+    object cdsInexcursionEXCURSION_NAME: TStringField
+      DisplayLabel = #1069#1082#1091#1089#1082#1091#1088#1089#1080#1103
+      FieldKind = fkLookup
+      FieldName = 'EXCURSION_NAME'
+      LookupDataSet = cdsExcursion
+      LookupKeyFields = 'ID'
+      LookupResultField = 'NAME'
+      KeyFields = 'ID_EXCURSION'
+      Size = 15
+      Lookup = True
+    end
+    object cdsInexcursionDATE_EXC: TDateField
+      DisplayLabel = #1044#1072#1090#1072' '#1087#1088#1086#1074#1077#1076#1077#1085#1080#1103
+      FieldName = 'DATE_EXC'
+    end
+  end
+end
