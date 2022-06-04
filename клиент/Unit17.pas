@@ -4,7 +4,7 @@ interface
 
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
-  Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB;
+  Dialogs, StdCtrls, Buttons, Grids, DBGrids, DB, ExtCtrls;
 
 type
   TForm17 = class(TForm)
@@ -18,6 +18,8 @@ type
     BitBtn10: TBitBtn;
     BitBtn1: TBitBtn;
     BitBtn2: TBitBtn;
+    Splitter1: TSplitter;
+    Panel1: TPanel;
     procedure BitBtn1Click(Sender: TObject);
     procedure BitBtn2Click(Sender: TObject);
     procedure BitBtn3Click(Sender: TObject);
