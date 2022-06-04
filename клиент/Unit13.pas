@@ -62,7 +62,7 @@ begin
       fmNewTour.country_id, fmNewTour.client_id, fmNewTour.DateTimePicker1.Date,
       fmNewTour.DateTimePicker2.Date, fmNewTour.Edit2.Text );
     except
-      MessageDlg('Ошибка записи', mtError, [mbOk], 0);
+      MessageDlg('ГЋГёГЁГЎГЄГ  Г§Г ГЇГЁГ±ГЁ', mtError, [mbOk], 0);
     end;
     dm.cdsTour.Refresh;
   end;
@@ -72,7 +72,7 @@ end;
 
 procedure TfmTour.N3Click(Sender: TObject);
 begin
-     MessageDlg('Удалить тур ?', mtConfirmation, [mbYes, mbNo], 0);
+     MessageDlg('Г“Г¤Г Г«ГЁГІГј ГІГіГ° ?', mtConfirmation, [mbYes, mbNo], 0);
      dm.DCOMConnection1.AppServer.smDeleteTour(dm.cdsTourID.Value);
      dm.cdsTour.Refresh;
 end;
@@ -94,11 +94,16 @@ begin
   dm.cdsTourID_COUNTRY.Value, dm.cdsTourID_APPLICATION.Value, fmNewTour.DateTimePicker1.Date,
       fmNewTour.DateTimePicker2.Date, dm.cdsTourPURPOSE.Value);
     except
-      MessageDlg('Ошибка записи', mtError, [mbOk], 0);
+      MessageDlg('ГЋГёГЁГЎГЄГ  Г§Г ГЇГЁГ±ГЁ', mtError, [mbOk], 0);
     end;
     dm.cdsTour.Refresh;
   end;
 end;
+end;
+
+procedure TfmTour.DBGrid1TitleClick(Column: TColumn);
+begin
+  dm.cdsTour.IndexFieldNames := Column.DisplayName;
 end;
 
 end.
