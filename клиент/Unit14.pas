@@ -68,6 +68,9 @@ begin
   Edit6.Text := client_name;
 end;
 
-
+procedure TfmNewTour.Edit2KeyPress(Sender: TObject; var Key: Char);
+begin
+  if (Key in ['0'..'9']) then Key := #0;
+end;
 
 end.
